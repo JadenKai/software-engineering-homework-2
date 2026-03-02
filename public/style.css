@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: circle;
+  text-align: left;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "links links"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: large;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+#sidebar {
+  grid-area: sidebar;
+  border-radius: 15px;
+  border: 2px solid #f1f1f1;
+  align-self: start;
+}
+
+#sidebar img {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+#sidebar ol {
+  padding-left: 40px;
+}
+
+.main_content {
+  grid-area: main;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16;
+  color: black;
+  padding: 5px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main_content .button {
+  margin-top: auto;
+  align-self: center;
+}
+
+.main_content ul {
+  margin-left: 30px;
+}
+
+#main_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 75px;
+  grid-area: header;
+  background-image: linear-gradient(to right, #cc2b5e, #753a88);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36;
+}
+
+#secondary_header {
+  grid-area: links;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18;
+  background-color: #333333;
+  grid-area: links;
+  color: #fff;
+  text-align: center;
+}
+
+#secondary_header nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
+}
+
+.header_button {
+  background-color: #333333;
+  color: white;
+  text-decoration: underline;
+  font-size: 18;
+}
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  align-items: center;
+  height: 50px;
+  grid-area: footer;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18;
+  padding: 10px;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  font-weight: bold;
+  justify-self: center;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
