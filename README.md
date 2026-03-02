@@ -12,17 +12,7 @@ npm install
 
 ### 2. Set up the database
 
-Run the schema script against your MySQL instance:
-
-```
-mysql -u root --socket=/tmp/mysql.sock < schema.sql
-```
-
-If the database already exists from a previous run, drop it first:
-
-```
-mysql -u root --socket=/tmp/mysql.sock -e "DROP DATABASE IF EXISTS recipe_site;" && mysql -u root --socket=/tmp/mysql.sock < schema.sql
-```
+You know what to do.
 
 ### 3. Start the server
 
