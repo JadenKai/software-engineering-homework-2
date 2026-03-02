@@ -3,6 +3,12 @@
   margin: 0;
   padding: 0;
 }
+a {
+  color: #ff5d85;
+}
+body {
+  background-color: #141414;
+}
 
 ul {
   list-style-type: circle;
@@ -49,7 +55,7 @@ ul {
   grid-area: main;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16;
-  color: black;
+  color: white;
   padding: 5px;
   margin: 5px;
   display: flex;
@@ -72,7 +78,7 @@ ul {
   color: white;
   height: 75px;
   grid-area: header;
-  background-image: linear-gradient(to right, #cc2b5e, #753a88);
+  background-color: #6b5dff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 36;
 }
@@ -107,7 +113,8 @@ ul {
   gap: 10px;
   text-align: center;
   justify-content: center;
-  background-color: #f1f1f1;
+  background-color: #333333;
+  color:white;
   align-items: center;
   height: 50px;
   grid-area: footer;
@@ -119,8 +126,8 @@ ul {
 .button {
   display: inline-block;
   padding: 12px 24px;
-  background-color: #4caf50;
-  color: white;
+  background-color: #f1ff5d;
+  color: black;
   text-decoration: none;
   border-radius: 15px;
   font-weight: bold;
@@ -128,5 +135,113 @@ ul {
 }
 
 .button:hover {
-  background-color: #45a049;
+  background-color: #c9d44e;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.home-content {
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+}
+
+.home-content ul {
+  display: inline-block;
+  text-align: left;
+}
+
+.about-me {
+  margin-bottom: 10px;
+}
+
+.home-card {
+  border: 2px solid #6b5dff;
+  border-radius: 10px;
+  background-color: #6b5dff;
+  color: white;
+  padding: 16px 24px;
+  width: 400px;
+}
+
+.section-label {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.recipe-table {
+  border-collapse: collapse;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+.recipe-table th,
+.recipe-table td {
+  border: 1px solid #3e4446;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.recipe-table th {
+  background-color: #3e4446;
+  color: white;
+}
+
+.ingredient {
+  position: relative;
+  cursor: default;
+  margin-bottom: 4px;
+}
+
+.popup {
+  color: white;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  background: #2b2a33;
+  border: 1px solid #3e4446;
+  border-radius: 6px;
+  padding: 8px 12px;
+  width: 240px;
+  font-size: 0.85em;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.form-group {
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+  background-color: #2b2a33;
+  padding: 6px 8px;
+  border: 1px solid #3e4446;
+  color: white;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 400px;
+}
+
+.ing-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.ing-row .ing-amount {
+  width: 100px;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

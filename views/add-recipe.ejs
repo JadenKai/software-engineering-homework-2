@@ -1,0 +1,77 @@
+<%- include('partials/header') %>
+
+    <main class="main_content full-width">
+      <p class="title">Add a Recipe</p>
+
+      <form id="recipe-form" action="/add-recipe" method="POST">
+        <div class="form-group">
+          <label for="name">Recipe Name:</label>
+          <input type="text" id="name" name="name">
+        </div>
+
+        <div class="form-group">
+          <label for="protein">Protein:</label>
+          <select id="protein" name="protein">
+            <option value="beef">Beef</option>
+            <option value="chicken">Chicken</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="instructions">Instructions:</label>
+          <textarea id="instructions" name="instructions" rows="5"></textarea>
+        </div>
+
+        <div class="form-group">
+          <p><strong>Ingredients:</strong></p>
+          <% ingredients.forEach(function(ing) { %>
+            <div class="ing-row">
+              <input type="checkbox" class="ing-checkbox" value="<%= ing.id %>" id="ing-<%= ing.id %>">
+              <label for="ing-<%= ing.id %>"><%= ing.name %></label>
+              <input type="text" class="ing-amount" placeholder="Amount">
+            </div>
+          <% }); %>
+        </div>
+
+        <button type="submit" class="button">Add Recipe</button>
+      </form>
+    </main>
+
+    <script>
+      document.getElementById('recipe-form').addEventListener('submit', function(e) {
+        var name = document.getElementById('name').value.trim();
+        var instructions = document.getElementById('instructions').value.trim();
+
+        if (!name || !instructions) {
+          e.preventDefault();
+          alert('Recipe name and instructions are required.');
+          return;
+        }
+
+        // Remove any previously added hidden fields
+        this.querySelectorAll('.ing-data').forEach(function(el) { el.remove(); });
+
+        // Add hidden fields only for checked ingredients
+        var form = this;
+        document.querySelectorAll('.ing-checkbox:checked').forEach(function(cb) {
+          var row = cb.closest('.ing-row');
+          var amount = row.querySelector('.ing-amount').value;
+
+          var idField = document.createElement('input');
+          idField.type = 'hidden';
+          idField.name = 'ingredient_ids';
+          idField.value = cb.value;
+          idField.className = 'ing-data';
+          form.appendChild(idField);
+
+          var amtField = document.createElement('input');
+          amtField.type = 'hidden';
+          amtField.name = 'amounts';
+          amtField.value = amount;
+          amtField.className = 'ing-data';
+          form.appendChild(amtField);
+        });
+      });
+    </script>
+
+<%- include('partials/footer') %>

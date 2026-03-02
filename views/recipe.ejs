@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+    <main class="main_content full-width">
+      <p class="title"><%= recipe.name %></p>
+      <p><strong>Protein:</strong> <%= recipe.protein %></p>
+
+      <p><strong>Instructions:</strong></p>
+      <p><%= recipe.instructions %></p>
+
+      <p><strong>Ingredients:</strong></p>
+      <ul>
+        <% ingredients.forEach(function(ing) { %>
+          <li class="ingredient">
+            <%= ing.amount %> <%= ing.name %>
+            <span class="popup"><%= ing.info %></span>
+          </li>
+        <% }); %>
+      </ul>
+
+      <a href="/recipes" class="button">Back to Recipes</a>
+    </main>
+
+    <script>
+      document.querySelectorAll('.ingredient').forEach(function(el) {
+        el.addEventListener('mouseenter', function() {
+          el.querySelector('.popup').style.display = 'block';
+        });
+        el.addEventListener('mouseleave', function() {
+          el.querySelector('.popup').style.display = 'none';
+        });
+      });
+    </script>
+
+<%- include('partials/footer') %>

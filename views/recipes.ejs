@@ -1,0 +1,27 @@
+<%- include('partials/header') %>
+
+    <main class="main_content full-width">
+      <p class="title">Recipes</p>
+
+      <p class="section-label">Beef</p>
+      <table class="recipe-table">
+        <thead><tr><th>Recipe</th></tr></thead>
+        <tbody>
+          <% beef.forEach(function(r) { %>
+            <tr><td><a href="/recipe/<%= r.id %>"><%= r.name %></a></td></tr>
+          <% }); %>
+        </tbody>
+      </table>
+
+      <p class="section-label">Chicken</p>
+      <table class="recipe-table">
+        <thead><tr><th>Recipe</th></tr></thead>
+        <tbody>
+          <% chicken.forEach(function(r) { %>
+            <tr><td><a href="/recipe/<%= r.id %>"><%= r.name %></a></td></tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </main>
+
+<%- include('partials/footer') %>
