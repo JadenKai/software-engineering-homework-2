@@ -24,24 +24,7 @@ If the database already exists from a previous run, drop it first:
 mysql -u root --socket=/tmp/mysql.sock -e "DROP DATABASE IF EXISTS recipe_site;" && mysql -u root --socket=/tmp/mysql.sock < schema.sql
 ```
 
-### 3. Configure database connection
-
-Copy the example env file and edit it with your credentials:
-
-```
-cp .env.example .env
-```
-
-`.env` fields:
-
-```
-DB_USER=root
-DB_PASSWORD=
-DB_NAME=recipe_site
-DB_SOCKET=/tmp/mysql.sock
-```
-
-### 4. Start the server
+### 3. Start the server
 
 ```
 npm start

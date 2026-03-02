@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import express, { type Request, type Response } from 'express';
 import { fileURLToPath } from 'url';
 import mysql from 'mysql2/promise';
@@ -18,10 +17,10 @@ app.use(express.static(path.join(dirname, '..', 'public')));
 app.use(express.urlencoded({ extended: true }));
 
 const pool = mysql.createPool({
-  socketPath: process.env['DB_SOCKET'] ?? '/tmp/mysql.sock',
-  user: process.env['DB_USER'] ?? 'root',
-  password: process.env['DB_PASSWORD'] ?? '',
-  database: process.env['DB_NAME'] ?? 'recipie_site',
+  socketPath: '/tmp/mysql.sock',
+  user: 'root',
+  password: '',
+  database: 'recipe_site',
 });
 
 app.get('/', (_req: Request, res: Response) => {
