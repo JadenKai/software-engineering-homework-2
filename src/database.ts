@@ -2,12 +2,17 @@
 import mysql from 'mysql2/promise';
 import type { RowDataPacket, ResultSetHeader } from 'mysql2';
 
-const pool = mysql.createPool({
-  socketPath: '/tmp/mysql.sock',
-  user: 'root',
-  password: '',
-  database: 'recipe_site',
-});
+const baseConfig = {
+  user: process.env.DB_USER ?? 'root',
+  password: process.env.DB_PASSWORD ?? '',
+  database: process.env.DB_NAME ?? 'recipe_site',
+};
+
+const pool = mysql.createPool(
+  process.env.DB_HOST
+    ? { ...baseConfig, host: process.env.DB_HOST, port: Number(process.env.DB_PORT ?? 3306) }
+    : { ...baseConfig, socketPath: '/tmp/mysql.sock' }
+);
 
 interface Recipe extends RowDataPacket {
   id: number;
