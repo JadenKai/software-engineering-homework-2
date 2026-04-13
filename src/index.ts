@@ -1,7 +1,9 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import router from './routes.js';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -14,7 +16,10 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(dirname, '..', 'views'));
 app.use(express.static(path.join(dirname, '..', 'public')));
 app.use(express.urlencoded({ extended: true }));
-app.use(router);
+
+// Import router after dotenv.config()
+const router = await import('./routes.js');
+app.use(router.default);
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);

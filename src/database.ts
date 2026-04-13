@@ -8,11 +8,11 @@ const baseConfig = {
   database: process.env.DB_NAME ?? 'recipe_site',
 };
 
-const pool = mysql.createPool(
-  process.env.DB_HOST
-    ? { ...baseConfig, host: process.env.DB_HOST, port: Number(process.env.DB_PORT ?? 3306) }
-    : { ...baseConfig, socketPath: '/tmp/mysql.sock' }
-);
+const config = process.env.DB_HOST
+  ? { ...baseConfig, host: process.env.DB_HOST, port: Number(process.env.DB_PORT ?? 3306) }
+  : { ...baseConfig, socketPath: '/tmp/mysql.sock' };
+
+const pool = mysql.createPool(config);
 
 interface Recipe extends RowDataPacket {
   id: number;
